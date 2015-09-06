@@ -17,7 +17,9 @@ public class Users {
 	private String modifyOn;
 	private String status;
 	
-	
+	public Users() {
+		// TODO Auto-generated constructor stub
+	}
 	
 	public Users(int id, String techPofileType,
 			String firstName, String lastName, String middleName,

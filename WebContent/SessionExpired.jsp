@@ -7,7 +7,7 @@
 </head>
 <body bgcolor="#5C9CCC">
 <div  style="text-align: center;padding-top: 100px;padding-bottom: 100px;">
-<h3>Session Expired . . . . <a href="Login.jsp?action=login" style="size: 16">Login</a></h3>
+<h3>Session Expired . . . . <a href="Login.jsp" style="size: 16">Login</a></h3>
   
 </div>
 </body>

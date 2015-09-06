@@ -1,4 +1,5 @@
 
+<%@page import="com.nearGroup.modal.Users"%>
 <%@page import="com.nearGroup.ui.server.impl.UserServicesImpl"%>
 <%@page import="com.nearGroup.ui.server.UserServices"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
@@ -19,19 +20,18 @@ if(("save").equalsIgnoreCase(resp) && id =="")
 {
 	String status = usersServices.insertNewTechProfile(request.getParameter("pTechProfileType"),request.getParameter("firstName"),
 			request.getParameter("middleName"),request.getParameter("lastName"),request.getParameter("password"),
-			request.getParameter("email"),request.getParameter("mobile"),request.getParameter("status"),"LoginUser");
+			request.getParameter("email"),request.getParameter("mobile"),request.getParameter("status"),((Users)session.getAttribute("techprofile")).getFirstName()+" "+((Users)session.getAttribute("techprofile")).getLastName());
 	%><%=status%><%
 	
 }
-// else if(("save").equalsIgnoreCase(resp) && id !="")
-// {
+ else if(("save").equalsIgnoreCase(resp) && id !="")
+ {
 	
-// 	String status = techProfileService.updateTechProfile(id,request.getParameter("pTechProfileType"),
-// 			request.getParameter("pVNCurl"),request.getParameter("pVNCPort"),request.getParameter("pSSHUrl"),request.getParameter("pSSHPort"),
-// 			request.getParameter("pDomain"),request.getParameter("tfn"),request.getParameter("tmn"),
-// 			request.getParameter("tln"),((TechProfileEntity)session.getAttribute("techprofile")).getTechId(),request.getParameter("corpUserName"));
-
-
+ 	String status = usersServices.updateTechProfile(request.getParameter("tid"),request.getParameter("pTechProfileType"),request.getParameter("firstName"),
+			request.getParameter("middleName"),request.getParameter("lastName"),request.getParameter("passwordStatus"),request.getParameter("password"),
+			request.getParameter("email"),request.getParameter("mobile"),request.getParameter("status"),((Users)session.getAttribute("techprofile")).getFirstName()+" "+((Users)session.getAttribute("techprofile")).getLastName());
+ 	%><%=status%><%
+ }
 // }
 // else if(("update").equalsIgnoreCase(resp))
 // {

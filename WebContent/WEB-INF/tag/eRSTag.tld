@@ -10,11 +10,22 @@
     <uri>http://nearGroup.in</uri> 
     
     <function>
-        <name>isValidEmanagerUser</name>
-        <function-class>com.eclinicalworks.ers.ui.server.impl.LoggingImple</function-class>
-        <function-signature>java.lang.String isValidEmanagerUser(java.lang.String,java.lang.String)</function-signature>
+        <name>isValidUser</name>
+        <function-class>com.nearGroup.ui.server.impl.UserServicesImpl</function-class>
+        <function-signature>java.lang.String isValidUser(java.lang.String,java.lang.String)</function-signature>
     </function>
     
+    <function>
+        <name>getTechInfo</name>
+        <function-class>com.nearGroup.ui.server.impl.UserServicesImpl</function-class>
+        <function-signature>com.nearGroup.modal.Users getTechProfile(java.lang.String)</function-signature>
+    </function>
+    
+     <function>
+        <name>logout</name>
+        <function-class>com.nearGroup.ui.server.impl.UserServicesImpl</function-class>
+        <function-signature>void getLogOut(java.lang.String)</function-signature>
+    </function>
 <!--      <function> -->
 <!--         <name>logout</name> -->
 <!--         <function-class>com.eclinicalworks.ers.ui.server.impl.LoggingImple</function-class> -->

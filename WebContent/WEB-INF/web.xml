@@ -26,7 +26,18 @@
 		<url-pattern>/verifying</url-pattern>
 	</servlet-mapping>
   
-  
+  <!-- Home Page -->
+  <servlet>
+		<description></description>
+		<servlet-name>HomeContraller</servlet-name>
+		<jsp-file>/jspXML/home/doJob.jsp</jsp-file>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>HomeContraller</servlet-name>
+		<url-pattern>/home</url-pattern>
+	</servlet-mapping>
+	
   <!-- Users Module -->
   
   <servlet>

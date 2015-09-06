@@ -49,17 +49,10 @@
 			<div align="center" style="margin-top: 5px;">
 				<input type="button" class="button" name="create"
 					value="Create Tech Profile" style="font-size: 11px; width: 140px;"
-					onclick="createNewProfile()" /> <input type="button"
-					class="button" name="create" value="Delete Tech Profile"
-					style="font-size: 11px;width: 140px;display: ${techprofile.techProfileType eq 'SYSTEM_ADMIN' ? 'inline' : 'none'}"
-					onclick="deleateProfile()" /> <input type="button" class="button"
+					onclick="createNewProfile()" />  <input type="button" class="button"
 					name="update" value="Update Tech Profile"
 					style="font-size: 11px; width: 140px;" onclick="getUpdateProfile()" />
-				<input type="button" class="button" value="Reload TechProfile"
-					style="font-size: 11px; width: 130px;"
-					onclick="ReloadTechProfileData()" /> <input type="button"
-					class="button" value="Refresh"
-					style="font-size: 11px; width: 80px;" onclick="gridReload()" />
+				
 			</div>
 
 
@@ -89,10 +82,7 @@
 						onclick="getSearchLoggingUsers()" style="width: 5%;" />&nbsp; <input
 						type="button" class="button" value="Clear"
 						onclick="getClearSearch()" style="width: 5%;" />&nbsp;&nbsp;&nbsp;&nbsp;
-					<input type="button" class="button example1tooltip"
-						title="Click to Download the Excel file"
-						onclick="downloadLoggedUserReport()" value="Export To Excel"
-						style="width: 10%;" />
+					
 				</div>
 				<div id="userlogs" class="scroll"></div>
 				<table id="userlogslist" class="scroll"></table>
@@ -115,7 +105,7 @@
 						for="TechProfileType" style="size: 20px;">TechProfile
 							Type</label><font color="red">*</font></td>
 					<td colspan="2"><select id="TechProfileType"
-						name="profile_type" style="width: 135px; height: 20px;"
+						name="TechProfileType" style="width: 135px; height: 20px;"
 						class="textBox">
 							<option value="TECH_SUPPORT" selected="selected">TECH_SUPPORT</option>
 							<option value="ADMIN">ADMIN</option>
@@ -155,7 +145,7 @@
 					<td colspan="2"><input type="text" name="password"
 						id="password" style="width: 250px; height: 20px;" class="textBox"
 						value="Default@123" disabled="disabled" /></td>
-					<td><input type="checkbox" class="example1tooltip" name="checkPassword" id = "checkPassword" onclick="changePaswword()" value="Update password"/></td>
+					<td><input type="checkbox" class="example1tooltip" name="checkPassword" id = "checkPassword" onclick="changePaswword()" title="Update password"/></td>
 				</tr>
 				<tr>
 

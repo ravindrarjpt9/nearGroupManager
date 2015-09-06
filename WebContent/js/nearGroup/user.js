@@ -79,8 +79,7 @@ function formValidation()
 function closeTechDialog()
 {
     $("#techprofiledilog").dialog('close');
-    //document.getElementById("goid").style.display = 'block';
-    $('#TechProfileType').removeAttr('disabled');
+    CloseDialogFunction();
 
 }
 function getUpdateProfile()
@@ -107,7 +106,7 @@ if(formValidation())
 	$.ajax({
         type: "POST",
         url: "/nearGroupManager/userDo.do",
-        data:({resp : "save",tid : $("#htechid").val(),pTechProfileType : $("#TechProfileType").val(),firstName :$("#firstName").val() ,middleName:$("#middleName").val() ,lastName :$("#lastName").val() , password :$("#password").val(),email:$("#email").val(),mobile:$("#mobile").val(),status:$("#status").val() }),
+        data:({resp : "save",tid : $("#htechid").val(),pTechProfileType : $("#TechProfileType").val(),firstName :$("#firstName").val() ,middleName:$("#middleName").val() ,lastName :$("#lastName").val() , passwordStatus:$('#checkPassword').is(':checked'),password :$("#password").val(),email:$("#email").val(),mobile:$("#mobile").val(),status:$("#status").val() }),
         success: function (msg)
  	     {
         	if($.trim(msg) == "update")
@@ -145,26 +144,15 @@ function CloseDialogFunction()
 {
 	$("#htechid").val('');
 	$("#TechProfileType").val('TECH_SUPPORT');
-	$("#eid").val('');
-	$("#tfn").val('');
-	$("#tmn").val('');
-	$("#tln").val('');
-	$("#eUser_Name").val('');
-	$("#vncUrl").val('');
-	$("#vncPort").val('');
-
-	$("#location").val('');
-	$("#department").val('');
-	$("#teamlead").val('');
+	$("#firstName").val('');
+	$("#middleName").val('');
+	$("#lastName").val('');
+	$("#password").val('Default@123');
+	$("#email").val('');
+	$("#mobile").val('');
+	$("#status").val('');
+	$('#checkPassword').attr('checked', false);
 	
-	$("#sshUrl").val('');
-	$("#sshPort").val('');
-	
-	
-	$("#CorpUserName1").val('');
-	$("#domainE").val('BILLING');
-	$("#lastupdate").val('');	
-	$('#TechProfileType').removeAttr('disabled');
 }
 function validate()
 {
@@ -187,7 +175,7 @@ function openTechProfileDialog()
     if(id != null)
 	{
 	$("#htechid").val($('#techProfile').jqGrid ('getCell', id, 'tech_id'));
-	$("#profile_type").val($('#techProfile').jqGrid ('getCell', id, 'role'));
+	$("#TechProfileType").val($('#techProfile').jqGrid ('getCell', id, 'role'));
 	$("#firstName").val($('#techProfile').jqGrid ('getCell', id, 'first_name'));
 	$("#middleName").val($('#techProfile').jqGrid ('getCell', id, 'middle_name'));
 	$("#lastName").val($('#techProfile').jqGrid ('getCell', id, 'last_name'));
@@ -211,14 +199,7 @@ else
 	$("#password").val($('#techProfile').jqGrid ('getCell', $("#techProfile").jqGrid('getGridParam', 'selrow'), 'password'));
 	}
 }
-function gridReload()
-{
-	
-	
-	$("#techProfileSearchValu").val('');
-	gridReloadTechProfile();
-	
-}
+
 function deleateProfile()
 {
 	var id = jQuery("#techProfile").jqGrid('getGridParam','selarrrow');
@@ -252,41 +233,7 @@ function deleateProfile()
 	}	
 	
 }
-function ReloadTechProfileData()
-{
-	
-	var id = jQuery("#techProfile").jqGrid('getGridParam','selarrrow');
-	var emanagername = getEmanagernamebyId(id);
-	if(id == null || id == '')
-		{
-		alert('No Profile is Selected,Please Select the Profile..!');
-		}
-	else
-		{
-		$.blockUI({ message: '<h3>We are processing your request.  Please be patient</h3><p><img src="css/images/loading.gif" /><p><h4 style="color: red">**Do not refresh this page**</h4>' }); 
-	$.ajax({
-        type: "POST",
-        url: "/oneclicksupport/techDo.do",
-        data:({resp : "ReloadProfile",eManagerIds : id.toString(),eManagernames : emanagername.toString(),handshake : "2ff3db1d48ba025df04d06dfdc008a02"}),
-        success: function (msg)
- 	     {
-        	
-        	 $.unblockUI();
-       	 if(parseInt($.trim(msg)) >= 0)
-       		 {
-       		 alert($.trim(msg) +" Techprofile has been Updated");
-       		 $('#techProfile').trigger("reloadGrid");
-       		 }
-       	 else
-       		 {
-       		 alert('Something is Wrong in DAO Layer');
-       		 
-       		 }
-        }
-      });
-		}
-	
-}
+
 function gridReloadTechProfile()
 {
 	var searchTypeTechProfile = jQuery("#sTypeTechProfile").val();

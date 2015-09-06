@@ -11,6 +11,7 @@
 <script src="${pageContext.request.contextPath}/js/jquery.tabSlideOut.v1.3.js"></script>
 <link rel="stylesheet" type="text/css" media="screen" href="${pageContext.request.contextPath}/js/css/control.css" />
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.tooltip.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.jcryption.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/nearGroup/Login1.js"></script>
  
 <style type="text/css">

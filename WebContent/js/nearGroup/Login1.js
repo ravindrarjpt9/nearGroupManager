@@ -1,10 +1,20 @@
-
+var hashObj = "";
+		var password ="";
 	$(function(){
 		
-		window.history.forward();
-	    function noBack() { window.history.forward(); }
-	    
 		
+	    
+		hashObj = new jsSHA("mySuperPassword", "ASCII");
+		password = hashObj.getHash("SHA-512", "HEX");
+	 
+		 $.jCryption.authenticate(password, "/nearGroupManager/verifying", "/nearGroupManager/verifying",
+				
+				function() {
+					// Authentication failed
+					
+				}
+		); 
+		 
 		 $('#login_id').focus();
 		 
 	}
@@ -18,14 +28,14 @@
 	function loginCorp()
 	{
 		
-		
 		if(validationForm())
 			{
 			
 			$("#login").attr("disabled", "disabled");
 			$("#msgbox").removeClass().addClass('myinfo').text('Validating Your Login..... ').fadeIn(1000);
 			document.body.style.cursor = 'wait';
-			var encryptedString = $('#login_id').val()+"~"+$('#password').val();
+			var encryptedString = $.jCryption.encrypt($('#login_id').val()+"~"+$('#password').val(), password);
+			
 			this.timer = setTimeout(function () {
 				$.ajax({
 		          	url: '/nearGroupManager/verifying',
@@ -33,11 +43,12 @@
 		          	type: 'post',
 		   			success: function(msg){
 		   				document.body.style.cursor = 'default';
-		   				alert($.trim(msg));
- 			         if($.trim(msg) == 'null')
-				      {
-				     window.location = "http://localhost:8080/nearGroupManager/Login.jsp?action=login";
-				      }
+		   				
+// 			         if($.trim(msg) == 'null')
+//				      {
+//				     window.location = "http://localhost:8080/nearGroupManager/Login.jsp?action=login";
+//				      }
+		   				
 			           if($.trim(msg) == 'true') 
 						{				
 							$("#msgbox").html('Login Verified, Logging in.....').addClass('myinfo').fadeTo(900,1,
@@ -50,18 +61,27 @@
 			                  });
 							
 							  }
-						  else if($.trim(msg) == "notregistered")
-							  {
-							  $("#msgbox").html('Profile is not Registered.....').removeClass().addClass('myerror').fadeTo(900,1,
-					                  function()
-					                  {
-										
-								  window.location = "http://10.211.39.37:8080/nearGroupManager/techError.jsp",
-												'',
-												'toolbar=no,location=no,status=yes,menubar=no,scrollbars=yes,copyhistory=no,resizable=yes';
-					                  });
-									 
-							  }
+			           else if($.trim(msg) == 'INACTIVE')
+						{
+						$("#login").removeAttr("disabled");
+						$("#msgbox").fadeTo(200,0.1,function() 
+	                	{
+		                 
+		                  $(this).html('Sorry, You have become inactive .Please contact to administrator.').removeClass().addClass('myerror').fadeTo(900,1);
+		                });
+						}
+			           else if($.trim(msg) == 'PasswordRest')
+						{
+						$("#login").removeAttr("disabled");
+						$("#msgbox").fadeTo(200,0.1,function() 
+	                	{
+		                 
+							window.location =
+								"http://localhost:8080/nearGroupManager/ResetPassword.jsp",
+								'',
+								'toolbar=no,location=no,status=yes,menubar=no,scrollbars=yes,copyhistory=no,resizable=yes';
+		                });
+						}
 						else if($.trim(msg) == 'false')
 							{
 							$("#login").removeAttr("disabled");
@@ -71,15 +91,6 @@
 			                  $(this).html('Sorry, Wrong Combination Of Username And Password.').removeClass().addClass('myerror').fadeTo(900,1);
 			                });
 							}
-						else if($.trim(msg) == 'databasedown')
-						{
-						$("#login").removeAttr("disabled");
-						$("#msgbox").fadeTo(200,0.1,function() 
-	                	{
-		                 
-		                  $(this).html('Server unreachable right now please try to login from Corp mode').removeClass().addClass('myerror').fadeTo(900,1);
-		                });
-						}
 					}
 				
 				});
