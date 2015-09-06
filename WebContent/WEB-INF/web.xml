@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
+  <display-name>mycom</display-name>
+  <welcome-file-list>
+   
+    <welcome-file>Login.jsp</welcome-file>
+  </welcome-file-list>
+  
+  <servlet>
+  <servlet-name>startup</servlet-name>
+  <servlet-class>com.nearGroup.services.ActiveResources</servlet-class>
+  <load-on-startup>1</load-on-startup>
+  </servlet>
+  
+  
+  
+  <!-- JSP Servlet mapping -->
+  <servlet>
+		<description></description>
+		<servlet-name>LoginVerifi</servlet-name>
+		<jsp-file>/jspXML/home/LoginVerifi.jsp</jsp-file>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>LoginVerifi</servlet-name>
+		<url-pattern>/verifying</url-pattern>
+	</servlet-mapping>
+  
+  
+  <!-- Users Module -->
+  
+  <servlet>
+		<description></description>
+		<servlet-name>UsersJobs</servlet-name>
+		<jsp-file>/jspXML/users/doJob.jsp</jsp-file>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>UsersJobs</servlet-name>
+		<url-pattern>/userDo.do</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<description></description>
+		<servlet-name>UserList</servlet-name>
+		<jsp-file>/jspXML/users/getListOfUsersXml.jsp</jsp-file>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>UserList</servlet-name>
+		<url-pattern>/userList.do</url-pattern>
+	</servlet-mapping>
+	
+	
+  
+  <!-- Session time out 10 hour 600 min -->
+	<session-config>
+		<session-timeout>30</session-timeout>
+	</session-config>
+	
+  
+  <!-- nearGroupManager DATA SOURCE  -->
+	<resource-ref>
+		<description>nearGroupManager Data Base</description>
+		<res-ref-name>jdbc/nearGroupManager</res-ref-name>
+		<res-type>javax.sql.DataSource</res-type>
+		<res-auth>Container</res-auth>
+	</resource-ref>
+	
+	<!-- Alpha Data source  -->
+	<resource-ref>
+		<description>alpha Database</description>
+		<res-ref-name>jdbc/alpha</res-ref-name>
+		<res-type>javax.sql.DataSource</res-type>
+		<res-auth>Container</res-auth>
+	</resource-ref>
+	
+	
+	
+</web-app>

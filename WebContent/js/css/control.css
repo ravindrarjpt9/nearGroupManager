@@ -1,0 +1,218 @@
+.tb11 {
+	background:#FFFFFF url(../images/search.png) no-repeat 4px 4px;
+	padding:4px 4px 4px 22px;
+	border:1px solid #CCCCCC;
+	
+	
+}
+   .rowColorGREEN { background-color:#D7FFEB;}
+   .rowColorYellow { background-color:#FFFFCC;}
+   .rowColorRED { background-color:#FFC6C6;}
+   
+.button {
+	-moz-box-shadow:inset 0px 1px 0px 0px #ffffff;
+	-webkit-box-shadow:inset 0px 1px 0px 0px #ffffff;
+	box-shadow:inset 0px 1px 0px 0px #ffffff;
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #B6D3E9), color-stop(1, #B6D3E9) );
+	background:-moz-linear-gradient( center top, #B6D3E9 5%, #B6D3E9 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#B6D3E9', endColorstr='#B6D3E9');
+	background-color:#B6D3E9;
+	-moz-border-radius:2px;
+	-webkit-border-radius:2px;
+	border-radius:2px;
+	border:1px solid #0a0a0a;
+	display:inline-block;
+	color:#0f010f;
+	font-family:arial;
+	font-size:12px;
+	font-weight:bold;
+	padding:5px 2px;
+	text-decoration:none;
+	text-shadow:1px 1px 0px #ffffff;
+	cursor: pointer;
+}.button:hover {
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #5C9CCC), color-stop(1, #5C9CCC) );
+	background:-moz-linear-gradient( center top, #5C9CCC 5%, #5C9CCC 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#5C9CCC', endColorstr='#5C9CCC');
+	background-color:#5C9CCC;
+}.button:active {
+	position:relative;
+	top:1px;
+}
+#footer, #push {
+	height:60px;
+}
+#footer {
+	background-color:#009BC1;
+	width:100%;
+	margin:0 auto;
+	color:#ffffff;
+}
+
+
+
+.dialog
+{
+  font-family: Helvetica,Arial,Verdana,sans-serif;
+  font-size: 12px;
+  font-weight: bold;
+}
+.mainForm{
+font: bold;
+font-size: 15px;
+font-weight: bold;
+}
+
+
+.inputHide {
+    font-size       : 100px;
+    border          : none;
+    background      : transparent;
+    
+    
+}
+
+
+.textBox{
+	background-image: url(../images/bg.png);
+	border: 1px solid #6297BC;
+	
+}
+.field{
+	background-image: url(../images/bg.png);
+	border-top: 2px solid #74B0C6;
+	border-bottom: 2px solid #74B0C6;
+	
+}
+
+.content {   
+  overflow:auto;
+  min-width: 900px;
+  background: #DCECF1;
+  margin: 1px auto;
+  margin-bottom: 5px;
+}
+
+.left, .right11 {
+ 
+  margin:1px; 
+ /* padding: 1.5em;*/
+  
+}
+
+.left {   
+  float:left; 
+}
+#right11 {   float:right; 
+}
+
+.ui-jqgrid .ui-jqgrid-btable { cursor : pointer; }
+
+
+ .slide-out-div {
+        padding: 3px;
+        width: 390px;
+        background: #f2f2f2;
+        border: #29216d 2px solid;
+        height: :139px;
+        position:absolute;
+  margin-left: 38%;
+  
+    }
+    
+
+		
+		#feedback form{
+			float: left;
+			border: 0px solid #999;
+			padding: 10px;
+			border-radius:5px;
+		}
+		#feedback form label{
+			display: block;
+			float: left;
+			text-align:right;
+			margin-right:20px;
+			width:75px;
+			font-weight:bold;
+			color: 019AC6;
+			font-size:14px;
+		}
+		#feedback form textarea{
+			width:270px;
+			height:140px;
+			border: 1px solid #019AC6;
+		}
+		#feedback form input[type="text"]{
+			width:270px;
+			height:24px;
+			border: 1px solid #019AC6;
+		}
+		#feedback h2{
+			text-align:center;
+			color: #019AC6;
+			/*text-shadow:0.2px 0.3px 0.3px #000;*/
+			font-size:14px;
+		}
+
+/* Login page feedback  */
+
+ .slide-out-div1 {
+        padding: 3px;
+        width: 392px;
+        background: #f2f2f2;
+        border: #29216d 2px solid;
+        height: :139px;
+        position:absolute;
+  margin-left: 38%;
+  
+    }
+    
+
+		
+		#feedback1 form{
+			float: left;
+			border: 0px solid #999;
+			padding: 10px;
+			border-radius:5px;
+		}
+		#feedback1 form label{
+			display: block;
+			float: left;
+			text-align:right;
+			margin-right:20px;
+			width:75px;
+			font-weight:bold;
+			color: 019AC6;
+			font-size:14px;
+		}
+		#feedback1 form textarea{
+			width:270px;
+			height:140px;
+			border: 1px solid #019AC6;
+		}
+		#feedback1 form input[type="text"]{
+			width:270px;
+			height:24px;
+			border: 1px solid #019AC6;
+		}
+		#feedback1 h2{
+			text-align:center;
+			color: #019AC6;
+			/*text-shadow:0.2px 0.3px 0.3px #000;*/
+			font-size:14px;
+		}
+
+
+
+		.jqgrid-vnc-menu{
+		background-image: url(../images/vnc1.png);
+         height: 21px;
+         width: 20px;
+		}
+		
+		.jqgrid-rdp-menu{
+		background-image: url(../images/rdp.jpg);
+         height: 21px;
+         width: 20px;
+		}

@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<taglib 
+    xmlns="http://java.sun.com/xml/ns/j2ee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee/web-jsptaglibrary_2_0.xsd"
+    version="2.0">
+    
+    <tlib-version>1.0</tlib-version>
+   
+    <uri>http://nearGroup.in</uri> 
+    
+    <function>
+        <name>isValidEmanagerUser</name>
+        <function-class>com.eclinicalworks.ers.ui.server.impl.LoggingImple</function-class>
+        <function-signature>java.lang.String isValidEmanagerUser(java.lang.String,java.lang.String)</function-signature>
+    </function>
+    
+<!--      <function> -->
+<!--         <name>logout</name> -->
+<!--         <function-class>com.eclinicalworks.ers.ui.server.impl.LoggingImple</function-class> -->
+<!--         <function-signature>void getPutLoggedOutDate(java.lang.String,java.lang.String)</function-signature> -->
+<!--     </function> -->
+    
+<!--      <function> -->
+<!--         <name>validateUserDomain</name> -->
+<!--         <function-class>com.eclinicalworks.ers.ui.server.impl.LoggingImple</function-class> -->
+<!--         <function-signature>com.eclinicalworks.ers.ui.pojo.UserLogged validateUserDomain(java.lang.String)</function-signature> -->
+<!--     </function> -->
+    
+<!--     <function> -->
+<!--         <name>practiceInformation</name> -->
+<!--         <function-class>com.eclinicalworks.ers.ui.server.impl.TechProfileServiceImpl</function-class> -->
+<!--         <function-signature>java.lang.Object[] getPracticeInformation(java.lang.String,com.eclinicalworks.ers.ui.pojo.TechProfileEntity)</function-signature> -->
+<!--     </function> -->
+    
+<!--     <function> -->
+<!--         <name>updateTechPracticeHistory</name> -->
+<!--         <function-class>com.eclinicalworks.ers.ui.server.impl.TechProfileServiceImpl</function-class> -->
+<!--         <function-signature>void updateTechPracticeHistory(java.lang.String,java.lang.String)</function-signature> -->
+<!--     </function> -->
+    
+<!--      <function> -->
+<!--         <name>isValidEmanagerUser</name> -->
+<!--         <function-class>com.eclinicalworks.ers.ui.server.impl.LoggingImple</function-class> -->
+<!--         <function-signature>java.lang.String isValidEmanagerUser(java.lang.String,java.lang.String)</function-signature> -->
+<!--     </function> -->
+    
+    
+<!--      <function> -->
+<!--         <name>StoreUserLog</name> -->
+<!--         <function-class>com.eclinicalworks.ers.ui.server.impl.LoggingImple</function-class> -->
+<!--         <function-signature>java.lang.String getStoreUserLog(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)</function-signature> -->
+<!--     </function> -->
+    
+    
+<!--     <function> -->
+<!--         <name>getTechInfo</name> -->
+<!--         <function-class>com.eclinicalworks.ers.ui.server.impl.TechProfileServiceImpl</function-class> -->
+<!--         <function-signature>com.eclinicalworks.ers.ui.pojo.TechProfileEntity getTechProfile(java.lang.String,java.lang.String)</function-signature> -->
+<!--     </function> -->
+    
+    
+<!--     <function> -->
+<!--         <name>LimitParam</name> -->
+<!--         <function-class>com.eclinicalworks.ers.util.Helper</function-class> -->
+<!--         <function-signature>java.lang.StringBuilder[] getLimitParam(java.lang.String,java.lang.String,java.lang.String)</function-signature> -->
+<!--     </function> -->
+    
+<!--      <function> -->
+<!--         <name>htmlEscape</name> -->
+<!--         <function-class>com.eclinicalworks.ers.util.Helper</function-class> -->
+<!--         <function-signature>java.lang.String htmlEscape(java.lang.String)</function-signature> -->
+<!--     </function> -->
+    
+<!--      <function> -->
+<!--         <name>UIJobStatus</name> -->
+<!--         <function-class>com.eclinicalworks.ers.util.Helper</function-class> -->
+<!--         <function-signature>java.lang.String getUIJobStatus(java.lang.String,java.lang.String)</function-signature> -->
+<!--     </function> -->
+    
+<!--     <function> -->
+<!--         <name>corpVerify</name> -->
+<!--         <function-class>com.eclinicalworks.ers.ui.server.impl.LoggingImple</function-class> -->
+<!--         <function-signature>java.lang.Boolean isValidCorpUser(java.lang.String)</function-signature> -->
+<!--     </function> -->
+    
+    
+<!--      <function> -->
+<!--         <name>location</name> -->
+<!--         <function-class>com.eclinicalworks.ers.util.Helper</function-class> -->
+<!--         <function-signature>java.util.List getListOfTechLocation()</function-signature> -->
+<!--     </function> -->
+    
+<!--      <function> -->
+<!--         <name>jobName</name> -->
+<!--         <function-class>com.eclinicalworks.ers.ui.server.impl.ReportControllerImpl</function-class> -->
+<!--         <function-signature>java.util.List getListOfName()</function-signature> -->
+<!--     </function> -->
+   
+   
+<!--     <function> -->
+<!--         <name>ersVersion</name> -->
+<!--         <function-class>com.eclinicalworks.ers.ui.server.impl.ReportControllerImpl</function-class> -->
+<!--         <function-signature>java.util.List getListOfErsVersion()</function-signature> -->
+<!--     </function> -->
+    
+    
+<!--      <function> -->
+<!--         <name>sshurls</name> -->
+<!--         <function-class>com.eclinicalworks.ers.util.Helper</function-class> -->
+<!--         <function-signature>java.util.List getListOfSshUrls()</function-signature> -->
+<!--     </function> -->
+    
+    
+<!--     <function> -->
+<!--         <name>oslist</name> -->
+<!--         <function-class>com.eclinicalworks.ers.ui.server.impl.TechSupportImpl</function-class> -->
+<!--         <function-signature>java.util.List getOsList()</function-signature> -->
+<!--     </function> -->
+    
+    
+    
+    
+    
+    </taglib>

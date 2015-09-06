@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context>
+  <Resource name="jdbc/nearGroupManager" auth="Container" type="javax.sql.DataSource" 
+                username="root" password="root" 
+                factory="org.apache.tomcat.dbcp.dbcp.BasicDataSourceFactory" 
+                initialSize="30" 
+                maxActive="50" 
+                maxIdle="-1" 
+                maxWait="10000" 
+                validationQuery="SELECT 1" 
+                testWhileIdle="true" 
+                timeBetweenEvictionRunsMillis="1800000" 
+                minEvictableIdleTimeMillis="25" 
+                driverClassName="com.mysql.jdbc.Driver" 
+                url="jdbc:mysql://127.0.0.1:3306/nearGroup?zeroDateTimeBehavior=round" 
+                removeAbandoned="true" 
+                removeAbandonedTimeout="1" 
+                logAbandoned="true" />
+
+
+ 				<Resource name="jdbc/alpha" auth="Container" type="javax.sql.DataSource" 
+                username="root" password="root" 
+                factory="org.apache.tomcat.dbcp.dbcp.BasicDataSourceFactory" 
+                initialSize="15" 
+                maxActive="30" 
+                maxIdle="-1" 
+                maxWait="10000" 
+                validationQuery="SELECT 1" 
+                testWhileIdle="true" 
+                timeBetweenEvictionRunsMillis="1800000" 
+                minEvictableIdleTimeMillis="25" 
+                driverClassName="com.mysql.jdbc.Driver" 
+                url="jdbc:mysql://127.0.0.1:3306/alpha_db?zeroDateTimeBehavior=round" 
+                removeAbandoned="true" 
+                removeAbandonedTimeout="1" 
+                logAbandoned="true" />
+                
+               
+                </Context>
