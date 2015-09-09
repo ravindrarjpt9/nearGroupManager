@@ -1,7 +1,9 @@
 package com.nearGroup.ui.server;
 
 import java.util.ArrayList;
+import java.util.List;
 
+import com.nearGroup.modal.UserLog;
 import com.nearGroup.modal.Users;
 
 public interface UserServices {
@@ -21,4 +23,8 @@ public interface UserServices {
 	
 	public String insertUserLoginLog(String fName,String lName,String role);
 	public String resetPassword(int id,String newPassword);
+	
+	public int getTotalUserLogs(String type,String value ,String loginDate);
+	
+	public List<UserLog> getAllUserLoginLog(String sql);
 }

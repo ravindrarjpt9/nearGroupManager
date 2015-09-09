@@ -1,7 +1,7 @@
 <div class='cssmenu'>
 <ul>
 <li class='active '><a href="home.jsp"><span>&nbsp;&nbsp;Home&nbsp;&nbsp;</span></a></li>
-<li><a href="user.jsp">Users</a></li>
+<li><a href="tech.jsp">Tech</a></li>
 <li><a href="about.jsp">About</a></li>
 </ul>
 </div>

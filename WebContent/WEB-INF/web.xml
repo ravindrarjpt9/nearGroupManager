@@ -38,12 +38,24 @@
 		<url-pattern>/home</url-pattern>
 	</servlet-mapping>
 	
+	<servlet>
+		<description></description>
+		<servlet-name>groupsList</servlet-name>
+		<jsp-file>/jspXML/home/getListOfGroups.jsp</jsp-file>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>groupsList</servlet-name>
+		<url-pattern>/group.do</url-pattern>
+	</servlet-mapping>
+	
+	
   <!-- Users Module -->
   
   <servlet>
 		<description></description>
 		<servlet-name>UsersJobs</servlet-name>
-		<jsp-file>/jspXML/users/doJob.jsp</jsp-file>
+		<jsp-file>/jspXML/tech/doJob.jsp</jsp-file>
 	</servlet>
 
 	<servlet-mapping>
@@ -54,12 +66,23 @@
 	<servlet>
 		<description></description>
 		<servlet-name>UserList</servlet-name>
-		<jsp-file>/jspXML/users/getListOfUsersXml.jsp</jsp-file>
+		<jsp-file>/jspXML/tech/getListOfUsersXml.jsp</jsp-file>
 	</servlet>
 
 	<servlet-mapping>
 		<servlet-name>UserList</servlet-name>
 		<url-pattern>/userList.do</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<description></description>
+		<servlet-name>userLog</servlet-name>
+		<jsp-file>/jspXML/tech/getListOfUserLoginDetails.jsp</jsp-file>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>userLog</servlet-name>
+		<url-pattern>/userLog.do</url-pattern>
 	</servlet-mapping>
 	
 	

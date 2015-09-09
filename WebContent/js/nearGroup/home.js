@@ -36,9 +36,13 @@ function fncHomeOnLoad() {
 
 function loadGroupGrid()
 {
+	$("#groupList").GridUnload();
+	var searchType = $("#sTypeH").val();
+	var searchvalue = $("#sTypeValue").val();
 	jQuery("#groupList").jqGrid(
 			{
-				url : '/nearGroupManager/groups.do',
+				url : '/nearGroupManager/group.do',
+				postData: {type : searchType,value : searchvalue,handshake : "2ff3db1d48ba025df04d06dfdc008a02"},
 				datatype : 'xml',
 				mtype : 'POST',
 				colNames : [ 'ID', 'Name', 'Category', 'Icon Category',
@@ -55,49 +59,50 @@ function loadGroupGrid()
 					index : 'name',
 					align : 'left',
 					sortable : false,
-					width : '40%'
+					width : '70%'
 
 				}, {
 					name : 'Category',
 					index : 'Category',
 					align : 'left',
 					sortable : false,
-					width : '40%'
+					width : '50%'
 
 				}, {
 					name : 'iconCategory',
 					index : 'iconCategory',
 					align : 'left',
 					sortable : false,
-					width : '70%'
+					width : '40%'
 
 				}, {
 					name : 'status',
 					index : 'status',
 					align : 'left',
 					sortable : false,
-					width : '45%'
+					width : '30%',
+					hidden :true
 
 				}, {
 					name : 'systemName',
 					index : 'systemName',
 					sortable : false,
 					align : 'left',
-					width : '73%'
+					width : '70%'
 
 				}, {
 					name : 'userCount',
 					index : 'userCount',
 					align : 'left',
 					sortable : false,
-					width : '40%'
+					width : '30%'
 
 				}, {
 					name : 'creationTime',
 					index : 'creationTime',
 					align : 'left',
 					sortable : false,
-					width : '70%'
+					width : '40%'
 
 				},{
 					name : 'modifiedTime',
@@ -105,7 +110,7 @@ function loadGroupGrid()
 					align : 'left',
 					sortable : false,
 					hidden : false,
-					width : '70%'
+					width : '40%'
 					
 
 				}],
@@ -117,6 +122,7 @@ function loadGroupGrid()
 				multiselect : false,
 				height : '185',
 				loadonce : false,
+				
 				
 				
 				
@@ -134,7 +140,7 @@ function loadPTopicsGrid()
 {
 	jQuery("#topicsLists").jqGrid(
 			{
-				url : '/nearGroupManager/groups.do',
+				url : '/nearGroupManager/group.do',
 				datatype : 'xml',
 				mtype : 'POST',
 				colNames : [ 'ID', 'Topic Name','Despcription', 'Type','Group Name', 

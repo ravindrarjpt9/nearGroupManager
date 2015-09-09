@@ -6,7 +6,7 @@
 
 <%
 request.setAttribute("title", "Users Details");
-request.setAttribute("body", "/WEB-INF/jsp/user-main.jsp");
+request.setAttribute("body", "/WEB-INF/jsp/tech-main.jsp");
 %>
 
 <jsp:include page="/WEB-INF/templates/mycom-template.jsp" />

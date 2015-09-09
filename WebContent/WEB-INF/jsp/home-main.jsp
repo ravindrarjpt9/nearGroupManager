@@ -44,12 +44,12 @@ $(document).ready(function() {
    <option value="DISPLAY_NAME" selected="selected">Name</option>
    <option value="GROUP_CATEGORY" >Category</option>
     
- </select>&nbsp;<input type="text" class="tb11 example1tooltip" id="sTypeValue"  style="font-style: italic; width: 9%;font-size:14px;height: 14.5px;" onfocus="if(this.value==this.defaultValue){this.value='';this.style.fontstyle='normal'}" value="Search..." onkeydown="if (event.keyCode == 13) { searchGroup();}" title="Press Enter to Search"/>
-   <b>All Group</b>
-   <input type="checkbox" name="allGroup" id="allGroup" onclick ="searchGroup()"/>
-  
-   <input type="button" class="button" value="Clear Search" style="width: 6%;height: 27px;" onclick="clearsearchfilter()"/>
-  <!--  <input type="button" class="button" value="Fix Duplicates" style="width: 7%" onclick="fixDuplicates()"/> -->
+ </select>&nbsp;<input type="text" class="tb11 example1tooltip" id="sTypeValue"  style="font-style: italic; width: 9%;font-size:14px;height: 14.5px;" onfocus="if(this.value==this.defaultValue){this.value='';this.style.fontstyle='normal'}" value="Search..." onkeydown="if (event.keyCode == 13) { loadGroupGrid();}" title="Press Enter to Search"/>
+   <b>All Topics</b>
+   <input type="checkbox" name="allTopics" id="allTopics" onclick ="searchTopic()"/>
+    <input type="button" class="button" value="Search Group" style="width: 7%" onclick="loadGroupGrid()"/>  
+   <input type="button" class="button" value="Clear Search" style="width: 7%;height: 27px;" onclick="clearsearchfilter()"/>
+ 
 </div>
 <div id = "pDiv" class="content" style="margin-top: 4px;">
 

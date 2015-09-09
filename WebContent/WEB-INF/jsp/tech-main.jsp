@@ -9,7 +9,7 @@
 <title></title>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.blockUI.js"></script>
 <script type="text/javascript"
-	src="${pageContext.request.contextPath}/js/nearGroup/user.js"></script>
+	src="${pageContext.request.contextPath}/js/nearGroup/tech.js"></script>
 <script type="text/javascript">
 	
 </script>
@@ -65,21 +65,22 @@
 				<div style="padding-top: 1px; padding-bottom: 5px;">
 					<b>Search By</b> <select id="sLoggedUserLogs"
 						style="width: 130px; height: 25px;">
-						<option value="name" selected="selected">Tech Name</option>
-						<!-- <option value="coprUserName">Corp User Name</option> -->
+						<option value="FIRST_NAME" selected="selected">First Name</option>
+						 <option value="LAST_NAME">Last Name</option>
+						  <option value="ROLE">Role</option>
 					</select>&nbsp;<input type="text" id="loggedUserid"
 						class="tb11 example1tooltip"
 						title="Select search by and press enter to search"
 						style="color: #AAAAAA"
 						onfocus="if(this.value==this.defaultValue){this.value='';this.style.color='#000000';this.style.fontstyle='normal'}"
 						value="Search..." style="width :10%;font-size:14px;height: 17px;"
-						onkeydown="if (event.keyCode == 13) { getSearchLoggingUsers();}" />
+						onkeydown="if (event.keyCode == 13) { loadUserLogsDetails();}" />
 					&nbsp;&nbsp; <label for="enddate"
 						style="font-family: Helvetica, Arial, Verdana, sans-serif; color: #000000; text-decoration: none; text-transform: uppercase;"><b>Login
 							Time</b></label> <input type="text" id="loggingdate" value=""
 						style="width: 7%; height: 18px" class="textBox" />&nbsp;&nbsp; <input
 						type="button" class="button" value="Search"
-						onclick="getSearchLoggingUsers()" style="width: 5%;" />&nbsp; <input
+						onclick="loadUserLogsDetails()" style="width: 5%;" />&nbsp; <input
 						type="button" class="button" value="Clear"
 						onclick="getClearSearch()" style="width: 5%;" />&nbsp;&nbsp;&nbsp;&nbsp;
 					

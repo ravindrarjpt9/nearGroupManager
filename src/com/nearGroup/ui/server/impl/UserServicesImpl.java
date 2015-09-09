@@ -6,10 +6,14 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.List;
 
 import org.apache.log4j.Logger;
 
+import XcoreXipworkssslX90X4675.lo;
+
 import com.nearGroup.db.DBManager;
+import com.nearGroup.modal.UserLog;
 import com.nearGroup.modal.Users;
 import com.nearGroup.ui.server.UserServices;
 import com.nearGroup.util.Constants;
@@ -203,5 +207,42 @@ public class UserServicesImpl implements UserServices {
 			logger.error("Error while updateing user password :[" + id + "]", e);
 		}
 		return status;
+	}
+
+	@Override
+	public int getTotalUserLogs(String type, String value, String loginDate) {
+
+		StringBuilder sql = new StringBuilder("select count(ID) from USERS_LOG");
+		if (!value.trim().endsWith(""))
+			sql.append(" where ").append(type).append(" like '").append(value.trim()).append("%' ");
+		if (!loginDate.trim().equals("") && value.trim().endsWith(""))
+			sql.append(" and date(LOGIN_TIME)='").append(loginDate.trim()).append("'");
+		else if (loginDate.trim().equals("") && !value.trim().endsWith(""))
+			sql.append(" where date(LOGIN_TIME)='").append(loginDate.trim()).append("'");
+
+		int count = 0;
+		try {
+			count = NearGroupDaoUtil.getTotalRecord(sql.toString(), Constants.NEAR_GROUP_DS);
+		} catch (Exception e) {
+			logger.error("Error while getting count of user log :", e);
+		}
+		return count;
+
+	}
+
+	@Override
+	public List<UserLog> getAllUserLoginLog(String sql) {
+
+		List<UserLog> list = new ArrayList<>();
+		try (Connection connection = DBManager.getConnection(Constants.NEAR_GROUP_DS); PreparedStatement ps = connection.prepareStatement(sql)) {
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				list.add(new UserLog(rs.getString("ID"), rs.getString("FIRST_NAME"), rs.getString("LAST_NAME"), rs.getString("ROLE"), Helper.chkNull(rs.getString("LOGIN_TIME")), Helper.chkNull(rs
+						.getString("LOGOUT_TIME"))));
+			}
+		} catch (Exception e) {
+			logger.error("Error whle getting  list of user log :[" + sql + "]", e);
+		}
+		return list;
 	}
 }

@@ -12,7 +12,7 @@ function fncOnTechProfileLoad()
 				borderColor : '#4297D7',
 				tooltipBGColor :  	'#DCECF1'
 			}); 
-		 
+		 $("#loggingdate").datepicker({dateFormat: 'yy-mm-dd',});
 			
 }
 
@@ -373,46 +373,48 @@ function loadFirstTabFirstGrid() {
 	});
 
 }
+function getClearSearch()
+{
+	$("#sLoggedUserLogs").val('First Name');
+	$("#loggedUserid").val('');
+	$("#loggingdate").val('');
+}
+
 function loadUserLogsDetails()
 {
+	$("#userlogslist").GridUnload();
 	var searchType = $("#sLoggedUserLogs").val();
 	var searchvalue = $("#loggedUserid").val();
 	var loggindate = $("#loggingdate").val();
 	jQuery("#userlogslist").jqGrid(
 			{
-				url : '/oneclicksupport/uLoggedList.do',
-				postData: {stypePractice : searchType,sPracticeValue : searchvalue,logindate : loggindate ,timezone : timezonename,handshake : "2ff3db1d48ba025df04d06dfdc008a02"  },
+				url : '/nearGroupManager/userLog.do',
+				postData: {stypePractice : searchType,sPracticeValue : searchvalue,logindate : loggindate ,handshake : "2ff3db1d48ba025df04d06dfdc008a02"  },
 				datatype : 'xml',
 				mtype : 'POST',
-				colNames : [ 'Domain', 'Machine Name','Tech Name', 'Login Time','Login Mode',
-						'Logout Time','Logout Mode'],
+				colNames : [ 'ID', 'First Name','Last Name', 'Role','Login Time',
+						'Logout Time'],
 				colModel : [  {
-					name : 'domain',
-					index : 'domain',
+					name : 'id',
+					index : 'id',
 					align : 'left',
 					sortable : false,
 					width : '100%'
 				}, {
-					name : 'machinename',
-					index : 'machinename',
+					name : 'firstName',
+					index : 'firstName',
 					align : 'left',
 					sortable : false,
 					width : '100%'
 				}, {
-					name : 'techname',
-					index : 'techname',
+					name : 'lastName',
+					index : 'lastName',
 					align : 'left',
 					sortable : false,
 					width : '140%'
 				},  {
-					name : 'logintime',
-					index : 'logintime',
-					align : 'left',
-					width : '140%',
-					sortable : false,
-				}, {
-					name : 'loginMode',
-					index : 'loginMode',
+					name : 'Role',
+					index : 'Role',
 					align : 'left',
 					width : '140%',
 					sortable : false,
@@ -423,8 +425,8 @@ function loadUserLogsDetails()
 					width : '140%',
 					sortable : false,
 				},{
-					name : 'logoutMode',
-					index : 'logoutMode',
+					name : 'logoutTime',
+					index : 'logoutTime',
 					align : 'left',
 					width : '140%',
 					sortable : false,
