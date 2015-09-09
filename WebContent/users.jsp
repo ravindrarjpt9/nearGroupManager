@@ -5,8 +5,8 @@
 <body>
 
 <%
-request.setAttribute("title", "Tech Support");
-request.setAttribute("body", "/WEB-INF/jsp/tech-main.jsp");
+request.setAttribute("title", "Apps Users");
+request.setAttribute("body", "/WEB-INF/jsp/users-main.jsp");
 %>
 
 <jsp:include page="/WEB-INF/templates/mycom-template.jsp" />
