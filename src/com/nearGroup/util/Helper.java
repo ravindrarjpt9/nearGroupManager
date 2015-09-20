@@ -37,9 +37,13 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
+import com.google.android.gcm.server.Message;
+import com.google.android.gcm.server.Result;
+import com.google.android.gcm.server.Sender;
 import com.nearGroup.db.DBManager;
 import com.nearGroup.security.AesEncryptor;
 import com.nearGroup.security.Base64;
+import com.sun.org.apache.xpath.internal.compiler.PsuedoNames;
 
 public class Helper {
 
@@ -368,6 +372,27 @@ public class Helper {
 		return null;
 	}
 	
+public static String sendUserNotification(String pushId,String message)
+{
+	logger.info("Going to send GCM message to push id["+pushId+"] message ["+message+"]");
+	Sender sender = new Sender(Constants.SERVER_API_KEY);
+	Message msg = new Message.Builder().addData("message", message)
+			.build();
+	
+		Result result = null;
+		try {
+			result = sender.send(msg, pushId, 1);
+			logger.info("Sent message to one device: " + result);
+			
+		} catch (IOException e) {
+			logger.error("Error while sending message to push id["+pushId+"] message ["+message+"]",e);
+			
+		
+		}
+		return result.getMessageId();
+		
+
+}
 	  public static String valdiateSQL(String strIn) {
 		String str = null;
 		String strQuote = null;

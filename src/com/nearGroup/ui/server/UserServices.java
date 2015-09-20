@@ -22,9 +22,14 @@ public interface UserServices {
 	public Users getTechProfile(String id);
 	
 	public String insertUserLoginLog(String fName,String lName,String role);
-	public String resetPassword(int id,String newPassword);
+	public String resetPassword(int id,String newPassword,String firstName);
 	
 	public int getTotalUserLogs(String type,String value ,String loginDate);
 	
 	public List<UserLog> getAllUserLoginLog(String sql);
+	
+	public String getUserProfile(int id);
+	
+	
+	
 }

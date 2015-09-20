@@ -38,6 +38,11 @@
     
 </td>
      </tr>
+     <tr>
+    <td style="width: 160px; text-align:right;"><label for="fname" >User Name(XMPP)<b>:</b></label></td>
+    <td colspan="2"><input type="text" readonly="readonly"   style="width: 250px;height: 20px; " class="inputHide" value="" id="xmppusername"/></td>
+   
+  </tr>
   <tr>
     <td style="width: 160px; text-align:right;"><label for="fname" >First Name <b>:</b></label></td>
     <td colspan="2"><input type="text" readonly="readonly"   style="width: 250px;height: 20px; " class="inputHide" value="" id="fname"/></td>

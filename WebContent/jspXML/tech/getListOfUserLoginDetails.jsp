@@ -67,7 +67,7 @@
   			start = 0;
   		}
   		
-  		StringBuilder sql =new StringBuilder("SELECT ID ,ROLE,FIRST_NAME,LAST_NAME ,LOGIN_TIME ,LOGOUT_TIME "+
+  		StringBuilder sql =new StringBuilder("SELECT ID ,ROLE,FIRST_NAME,LAST_NAME ,DATE(LOGIN_TIME) as LOGIN_TIME ,DATE(LOGOUT_TIME) as LOGOUT_TIME "+
   				" FROM  USERS_LOG");
   		if(!sPracticeValue.trim().equals(""))
   		sql.append(" where ").append(stypePractice).append(" like '") .append(sPracticeValue.trim()).append("%' ");
@@ -76,7 +76,7 @@
   		else if(logindate.trim().equals("") && !sPracticeValue.trim().equals(""))
   			sql.append(" where date(LOGIN_TIME)='").append(logindate.trim()).append("'");
   		if (nRowsPerPage != 0) {
-  			sql.append(" limit ").append(start).append(" , ")
+  			sql.append(" order by id desc").append(" limit ").append(start).append(" , ")
   					.append(nRowsPerPage);
   		}
 List<UserLog> list = userServices.getAllUserLoginLog(sql.toString());

@@ -15,7 +15,7 @@
 </script>
 
 </head>
-<body onload="javascript:fncOnTechProfileLoad();">
+<body onload="javascript:fncOnUsersProfileLoad();">
 
 
 	<br>
@@ -32,35 +32,76 @@
 			<div style="padding-bottom: 4px;">
 				<b>Search By</b> <select id="sTypeTechProfile"
 					style="width: 130px; height: 25px;">
-					<option value="ROLE">Profile Type</option>
-					<option value="FIRST_NAME" selected="selected">First
-						Name</option>
-					<option value="LAST_NAME">Last Name</option>
+					<option value="FIRST_NAME">Name</option>
+					<option value="CITY" selected="selected">City</option>
+					<option value=DEVICE_TYPE>Device Type</option>
+					<option value=JOB_TYPE>Job Type</option>
+					<option value=LOCALITY>Locality</option>
+					<option value=LOCATION>Location</option>
+					
 				</select>&nbsp;<input type="text" id="techProfileSearchValu"
 					class="tb11 example1tooltip"
 					title="Select search by and press enter to search"
 					style="color: #AAAAAA"
 					onfocus="if(this.value==this.defaultValue){this.value='';this.style.color='#000000';this.style.fontstyle='normal'}"
 					value="Search..." style="width :10%;font-size:14px;height: 17px;"
-					onkeydown="if (event.keyCode == 13) { gridReloadTechProfile();}" />
+					onkeydown="if (event.keyCode == 13) { loadUsersDetails();}" />
+					&nbsp;&nbsp;&nbsp;<label for="enddate"
+						style="font-family: Helvetica, Arial, Verdana, sans-serif; color: #000000; text-decoration: none; text-transform: uppercase;"><b>Login
+							Time</b></label> <input type="text" id="loggingdate" value=""
+						style="width: 7%; height: 18px" class="textBox" />&nbsp;&nbsp; <input
+						type="button" class="button" value="Search"
+						onclick="loadUsersDetails()" style="width: 5%;" />&nbsp;&nbsp;&nbsp;&nbsp;
+						<input type="button" class="button" name="Delete" value="Delete User" style="font-size: 11px;width: 140px;display: ${techprofile.techPofileType eq 'SYSTEM_ADMIN' ? 'inline' : 'inline'}" onclick="deleateUserFromDb()" />    
+						
 			</div>
 
-			<div id="page11" class="scroll"></div>
-			<table id="techProfile" class="scroll"></table>
-			<div align="center" style="margin-top: 5px;">
+			<div id="userPagers" class="scroll"></div>
+			<table id="appUsersProfile" class="scroll"></table>
+			<!-- <div align="center" style="margin-top: 5px;">
 				<input type="button" class="button" name="create"
 					value="Create Tech Profile" style="font-size: 11px; width: 140px;"
 					onclick="createNewProfile()" />  <input type="button" class="button"
 					name="update" value="Update Tech Profile"
 					style="font-size: 11px; width: 140px;" onclick="getUpdateProfile()" />
 				
-			</div>
+			</div> -->
 
-
+    
 		</div>
 
 
 		<div id="cwq" style="height: 525px;">
+			<form method=post name="logginuserreport" id="logginuserreport"
+				target=_top>
+				<div style="padding-top: 1px; padding-bottom: 5px;">
+					<b>Search By</b> <select id="sLoggedUserLogs"
+						style="width: 130px; height: 25px;">
+						<option value="FIRST_NAME" selected="selected">First Name</option>
+						 <option value="LAST_NAME">Last Name</option>
+						  <option value="ROLE">Role</option>
+					</select>&nbsp;<input type="text" id="loggedUserid"
+						class="tb11 example1tooltip"
+						title="Select search by and press enter to search"
+						style="color: #AAAAAA"
+						onfocus="if(this.value==this.defaultValue){this.value='';this.style.color='#000000';this.style.fontstyle='normal'}"
+						value="Search..." style="width :10%;font-size:14px;height: 17px;"
+						onkeydown="if (event.keyCode == 13) { loadUserLogsDetails();}" />
+					&nbsp;&nbsp; <label for="enddate"
+						style="font-family: Helvetica, Arial, Verdana, sans-serif; color: #000000; text-decoration: none; text-transform: uppercase;"><b>Login
+							Time</b></label> <input type="text" id="loggingdate" value=""
+						style="width: 7%; height: 18px" class="textBox" />&nbsp;&nbsp; <input
+						type="button" class="button" value="Search"
+						onclick="loadUserLogsDetails()" style="width: 5%;" />&nbsp; <input
+						type="button" class="button" value="Clear"
+						onclick="getClearSearch()" style="width: 5%;" />&nbsp;&nbsp;&nbsp;&nbsp;
+					
+				</div>
+				<div id="userlogs" class="scroll"></div>
+				<table id="userlogslist" class="scroll"></table>
+			</form>
+		</div>
+<div id="bwq" style="height: 525px;">
 			<form method=post name="logginuserreport" id="logginuserreport"
 				target=_top>
 				<div style="padding-top: 1px; padding-bottom: 5px;">
@@ -204,7 +245,19 @@
 				value="SYSTEM_ADMIN">
 		</form>
 	</div>
-
+<div  id="notifyMessage" style="display: none;font-size: 13px;font-family: Lucida Grande,Lucida Sans,Arial,sans-serif;font-weight: bold"  title="Send Message">
+    
+   
+    <label for="notifym"><b>Enter Message:</b></label><p>
+    <textarea rows="4" cols="25" id="notifym" class="textBox" style="resize:none;"></textarea>
+   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+   &nbsp; <input type="button" class="button"  value="OK" onclick="saveNotifyMessage()" style="width: 50px; "/>
+    <input type="button" class="button" value="Cancel" onclick="closeDialog('Message')" style="width: 60px; "/>
+    
+</div>
+<input type="hidden" id="uid" name="uid">
+<input type="hidden" id="ustatus" name="ustatus">
+<input type="hidden" id="upushid" name="upushid">
 
 
 </body>

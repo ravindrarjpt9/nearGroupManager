@@ -12,6 +12,7 @@ public class Groups {
 	private String creationTime;
 	
 	private String modifiedTime;
+	private int joinFlag = 0;
 
 	
 	public Groups(String id, String name, String category, String iconCategory, String status, String systemGroupName, String userCount, String creationTime, String modifiedTime) {
@@ -97,6 +98,14 @@ public class Groups {
 
 	public void setModifiedTime(String modifiedTime) {
 		this.modifiedTime = modifiedTime;
+	}
+
+	public int getJoinFlag() {
+		return joinFlag;
+	}
+
+	public void setJoinFlag(int joinFlag) {
+		this.joinFlag = joinFlag;
 	}
 	 
 }

@@ -33,7 +33,7 @@ function loadTabs()
 function createNewProfile()
 {
 	
-	
+	$("#firstName1").removeAttr('disabled','disabled');
 	$("#techprofiledilog").dialog({
 		resizable: false,
 		bgiframe: true,
@@ -50,24 +50,24 @@ function createNewProfile()
 function formValidation()
 {
 	
-	 if(document.techProfileForm.firstName.value == "" || document.techProfileForm.firstName.value == null)
+	 if(document.techProfileForm.firstName1.value == "" || document.techProfileForm.firstName1.value == null)
 		{
 		alert('Please enter the First Name');
 		
 		return false;
 		}
 	 
-	else if(document.techProfileForm.lastName.value == "" || document.techProfileForm.lastName.value == null)
+	else if(document.techProfileForm.lastName1.value == "" || document.techProfileForm.lastName1.value == null)
 		{
 		alert('Please enter the Last Name');
 		return false;
 		}
-	 else if(document.techProfileForm.email.value == "" || document.techProfileForm.email.value == null)
+	 else if(document.techProfileForm.email1.value == "" || document.techProfileForm.email1.value == null)
 	{
 	alert('Please enter the email');
 	return false;
 	}
-	else if(document.techProfileForm.mobile.value == "" || document.techProfileForm.mobile.value == null)
+	else if(document.techProfileForm.mobile1.value == "" || document.techProfileForm.mobile1.value == null)
 	{
 	alert('Please enter the Mobile No');
 	return false;
@@ -106,7 +106,7 @@ if(formValidation())
 	$.ajax({
         type: "POST",
         url: "/nearGroupManager/userDo.do",
-        data:({resp : "save",tid : $("#htechid").val(),pTechProfileType : $("#TechProfileType").val(),firstName :$("#firstName").val() ,middleName:$("#middleName").val() ,lastName :$("#lastName").val() , passwordStatus:$('#checkPassword').is(':checked'),password :$("#password").val(),email:$("#email").val(),mobile:$("#mobile").val(),status:$("#status").val() }),
+        data:({resp : "save",tid : $("#htechid").val(),pTechProfileType1 : $("#TechProfileType1").val(),firstName1 :$("#firstName1").val() ,middleName1:$("#middleName1").val() ,lastName1 :$("#lastName1").val() , passwordStatus1:$('#checkPassword1').is(':checked'),password1 :$("#password1").val(),email1:$("#email1").val(),mobile1:$("#mobile1").val(),status1:$("#status1").val() }),
         success: function (msg)
  	     {
         	if($.trim(msg) == "update")
@@ -143,15 +143,15 @@ if(formValidation())
 function CloseDialogFunction()
 {
 	$("#htechid").val('');
-	$("#TechProfileType").val('TECH_SUPPORT');
-	$("#firstName").val('');
-	$("#middleName").val('');
-	$("#lastName").val('');
-	$("#password").val('Default@123');
-	$("#email").val('');
-	$("#mobile").val('');
-	$("#status").val('');
-	$('#checkPassword').attr('checked', false);
+	$("#TechProfileType1").val('TECH_SUPPORT');
+	$("#firstName1").val('');
+	$("#middleName1").val('');
+	$("#lastName1").val('');
+	$("#password1").val('Default@123');
+	$("#email1").val('');
+	$("#mobile1").val('');
+	$("#status1").val('');
+	$('#checkPassword1').attr('checked', false);
 	
 }
 function validate()
@@ -174,15 +174,16 @@ function openTechProfileDialog()
 	var id=jQuery("#techProfile").jqGrid('getGridParam', 'selrow');
     if(id != null)
 	{
+    	$("#firstName1").attr('disabled','disabled');
 	$("#htechid").val($('#techProfile').jqGrid ('getCell', id, 'tech_id'));
-	$("#TechProfileType").val($('#techProfile').jqGrid ('getCell', id, 'role'));
-	$("#firstName").val($('#techProfile').jqGrid ('getCell', id, 'first_name'));
-	$("#middleName").val($('#techProfile').jqGrid ('getCell', id, 'middle_name'));
-	$("#lastName").val($('#techProfile').jqGrid ('getCell', id, 'last_name'));
-	$("#password").val($('#techProfile').jqGrid ('getCell', id, 'password'));
-	$("#email").val($('#techProfile').jqGrid ('getCell', id, 'email'));
-	$("#mobile").val($('#techProfile').jqGrid ('getCell', id, 'mobile'));
-	$("#status").val($('#techProfile').jqGrid ('getCell', id, 'status'));
+	$("#TechProfileType1").val($('#techProfile').jqGrid ('getCell', id, 'role'));
+	$("#firstName1").val($('#techProfile').jqGrid ('getCell', id, 'first_name'));
+	$("#middleName1").val($('#techProfile').jqGrid ('getCell', id, 'middle_name'));
+	$("#lastName1").val($('#techProfile').jqGrid ('getCell', id, 'last_name'));
+	$("#password1").val($('#techProfile').jqGrid ('getCell', id, 'password'));
+	$("#email1").val($('#techProfile').jqGrid ('getCell', id, 'email'));
+	$("#mobile1").val($('#techProfile').jqGrid ('getCell', id, 'mobile'));
+	$("#status1").val($('#techProfile').jqGrid ('getCell', id, 'status'));
 	$("#techprofiledilog").dialog({resizable: false,bgiframe: true,height: 310,width :485,close: CloseDialogFunction,position: "center",modal: false,draggable: false});
 	}
 	}

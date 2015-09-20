@@ -103,10 +103,10 @@
 			<table style="width: 450px;" class="dialog">
 				<tr>
 					<td style="width: 150px; text-align: right;"><label
-						for="TechProfileType" style="size: 20px;">TechProfile
+						for="TechProfileType1" style="size: 20px;">TechProfile
 							Type</label><font color="red">*</font></td>
-					<td colspan="2"><select id="TechProfileType"
-						name="TechProfileType" style="width: 135px; height: 20px;"
+					<td colspan="2"><select id="TechProfileType1"
+						name="TechProfileType1" style="width: 135px; height: 20px;"
 						class="textBox">
 							<option value="TECH_SUPPORT" selected="selected">TECH_SUPPORT</option>
 							<option value="ADMIN">ADMIN</option>
@@ -117,58 +117,58 @@
 				
 				<tr>
 					<td style="width: 150px; text-align: right;"><label
-						for="firstName">First Name</label><font color="red">*</font></td>
-					<td colspan="2"><input type="text" name="firstName"
-						id="firstName" style="width: 250px; height: 20px;"
-						class="textBox" value=""  /></td>
+						for="firstName1">First Name</label><font color="red">*</font></td>
+					<td colspan="2"><input type="text" name="firstName1"
+						id="firstName1" style="width: 250px; height: 20px;"
+						class="textBox" value="" disabled="disabled" /></td>
 					<td>&nbsp;</td>
 				</tr>
 				<tr>
 					<td style="width: 150px; text-align: right;"><label
-						for="middleName">Middle Name</label></td>
-					<td colspan="2"><input type="text" name="middleName" id="middleName"
+						for="middleName1">Middle Name</label></td>
+					<td colspan="2"><input type="text" name="middleName1" id="middleName1"
 						style="width: 250px; height: 20px;" class="textBox" value=""
 						 /></td>
 					<td>&nbsp;</td>
 				</tr>
 				<tr>
 					<td style="width: 150px; text-align: right;"><label
-						for="lastName">Last Name</label><font color="red">*</font></td>
-					<td colspan="2"><input type="text" name="lastName"
-						id="lastName" style="width: 250px; height: 20px;" class="textBox"
+						for="lastName1">Last Name</label><font color="red">*</font></td>
+					<td colspan="2"><input type="text" name="lastName1"
+						id="lastName1" style="width: 250px; height: 20px;" class="textBox"
 						value="" /></td>
 					<td>&nbsp;</td>
 				</tr>
 
 				<tr>
 					<td style="width: 150px; text-align: right;"><label
-						for="password">Password</label><font color="red">*</font></td>
-					<td colspan="2"><input type="text" name="password"
-						id="password" style="width: 250px; height: 20px;" class="textBox"
+						for="password1">Password</label><font color="red">*</font></td>
+					<td colspan="2"><input type="text" name="password1"
+						id="password1" style="width: 250px; height: 20px;" class="textBox"
 						value="Default@123" disabled="disabled" /></td>
-					<td><input type="checkbox" class="example1tooltip" name="checkPassword" id = "checkPassword" onclick="changePaswword()" title="Update password"/></td>
+					<td><input type="checkbox" class="example1tooltip" name="checkPassword1" id = "checkPassword1" onclick="changePaswword()" title="Update password"/></td>
 				</tr>
 				<tr>
 
 					<td style="width: 150px; text-align: right;"><label
-						for="email">EMAIL </label><font color="red">*</font></td>
-					<td colspan="2"><input type="text" name="email"
-						id="email" style="width: 250px; height: 20px;" class="textBox"
+						for="email1">EMAIL </label><font color="red">*</font></td>
+					<td colspan="2"><input type="text" name="email1"
+						id="email1" style="width: 250px; height: 20px;" class="textBox"
 						value=""  /></td>
 					<td>&nbsp;</td>
 				</tr>
 				<tr>
 					<td style="width: 150px; text-align: right;"><label
-						for="mobile">Mobile </label><font color="red">*</font></td>
-					<td colspan="2"><input type="text" name="mobile"
-						id="mobile" style="width: 250px; height: 20px;"
+						for="mobile1">Mobile </label><font color="red">*</font></td>
+					<td colspan="2"><input type="text" name="mobile1"
+						id="mobile1" style="width: 250px; height: 20px;"
 						class="textBox" value=""  /></td>
 					<td>&nbsp;</td>
 				</tr>
 				<tr>
 					<td style="width: 150px; text-align: right;"><label
-						for="status">STATUS</label><font color="red">*</font></td>
-					<td colspan="2"><select id="status" name="status"
+						for="status1">STATUS</label><font color="red">*</font></td>
+					<td colspan="2"><select id="status1" name="status1"
 						style="width: 135px;" class="textBox">
 							<option value="ACTIVE" selected="selected">ACTIVE</option>
 							<option value="INACTIVE">INACTIVE</option>

@@ -65,12 +65,12 @@
   			start = 0;
   		}
   		
-  		StringBuilder sql =new StringBuilder("SELECT ID ,FIRST_NAME, MIDDLE_NAME,LAST_NAME ,PASSWORD ,EMAIL ,MOBILE_NUM ,CREATED_TIME,"+
-  				"CREATED_BY, MODIFIED_TIME,MODIFY_BY,USER_STATUS,ROLE FROM  USERS");
+  		StringBuilder sql =new StringBuilder("SELECT ID ,FIRST_NAME, MIDDLE_NAME,LAST_NAME ,PASSWORD ,EMAIL ,MOBILE_NUM ,DATE(CREATED_TIME) as CREATED_TIME,"+
+  				"CREATED_BY, DATE(MODIFIED_TIME) as MODIFIED_TIME,MODIFY_BY,USER_STATUS,ROLE FROM  USERS");
   		if(!searchValue.trim().equals(""))
   		sql.append(" where ").append(techProfileType).append(" like '") .append(searchValue.trim()).append("%' ");
   		if (nRowsPerPage != 0) {
-  			sql.append(" limit ").append(start).append(" , ")
+  			sql.append(" order by id desc ").append(" limit ").append(start).append(" , ")
   					.append(nRowsPerPage);
   		}
 ArrayList<Users> techList = userServices.getAllTechProfiles(sql.toString());

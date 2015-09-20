@@ -15,10 +15,12 @@ import XcoreXipworkssslX90X4675.lo;
 import com.nearGroup.db.DBManager;
 import com.nearGroup.modal.UserLog;
 import com.nearGroup.modal.Users;
+import com.nearGroup.modal.XmppUser;
 import com.nearGroup.ui.server.UserServices;
 import com.nearGroup.util.Constants;
 import com.nearGroup.util.Helper;
 import com.nearGroup.util.NearGroupDaoUtil;
+import com.nearGroup.util.XMPPUtill;
 
 public class UserServicesImpl implements UserServices {
 
@@ -28,11 +30,13 @@ public class UserServicesImpl implements UserServices {
 	public String insertNewTechProfile(String techProfileType, String firstName, String middelName, String lastName, String password, String email, String mobile, String userStatus, String loginUser) {
 		logger.info("Going to create new user [" + email + "]");
 		String status = "";
+		int id =0;
 		String sql = "insert into USERS(FIRST_NAME,MIDDLE_NAME,LAST_NAME,PASSWORD,EMAIL,MOBILE_NUM,CREATED_BY,USER_STATUS,ROLE) " + "value(?,?,?,?,?,?,?,?,?)";
 		// Connection connection = null;
 		// PreparedStatement psTechProfile = null;
 		// connection = DBManager.getConnection(Constants.NEAR_GROUP_DS);
-		try (Connection connection = DBManager.getConnection(Constants.NEAR_GROUP_DS); PreparedStatement psTechProfile = connection.prepareStatement(sql)) {
+		try (Connection connection = DBManager.getConnection(Constants.NEAR_GROUP_DS); PreparedStatement psTechProfile = connection.prepareStatement(sql);
+				Statement psSelect = connection.createStatement()) {
 
 			psTechProfile.setString(1, firstName);
 			psTechProfile.setString(2, middelName);
@@ -45,8 +49,12 @@ public class UserServicesImpl implements UserServices {
 			psTechProfile.setString(9, techProfileType);
 			psTechProfile.executeUpdate();
 			logger.info("Successfully inserted new Tech profile Record with email [" + email + "]");
-
+			ResultSet rs = psSelect.executeQuery("SELECT LAST_INSERT_ID()");
+			while (rs.next()) {
+				id = rs.getInt(1);
+			}
 			status = "insert";
+			XMPPUtill.getRegisterdXmppUser(new XmppUser(firstName+"_"+id, password, firstName+" "+lastName, email), "ADD");
 		} catch (SQLException e) {
 			logger.error("Error while createing new user [" + email + "]", e);
 		}
@@ -96,29 +104,36 @@ public class UserServicesImpl implements UserServices {
 	@Override
 	public String updateTechProfile(String id, String techProfileType, String firstName, String middelName, String lastName, String passworsStatus, String password, String email, String mobile,
 			String status, String loginUser) {
-
+		String nPassword = "";
 		StringBuilder sql = new StringBuilder("update users set FIRST_NAME=?,MIDDLE_NAME=?,LAST_NAME=?");
 		if (passworsStatus != null && passworsStatus.equalsIgnoreCase("true"))
 			sql.append(",PASSWORD = ?");
 		else
 			sql.append(",EMAIL = ?,MOBILE_NUM=?,USER_STATUS=?,ROLE=? ,MODIFIED_TIME = NOW(),MODIFY_BY =? where id=?");
 
+		if (passworsStatus != null && passworsStatus.equalsIgnoreCase("true")){
+			nPassword = "Default@123";
+		}
+		else
+		{
+			nPassword = Helper.encrypt(password.trim(), Constants.ENCRYPTED_KEY);
+		}
 		try (Connection connection = DBManager.getConnection(Constants.NEAR_GROUP_DS); PreparedStatement ps = connection.prepareStatement(sql.toString())) {
 			int i = 1;
 			ps.setString(i++, firstName);
 			ps.setString(i++, middelName);
 			ps.setString(i++, lastName);
-			if (passworsStatus != null && passworsStatus.equalsIgnoreCase("true"))
-				ps.setString(i++, "Default@123");
+			ps.setString(i++, nPassword);
 			ps.setString(i++, email);
 			ps.setString(i++, mobile);
 			ps.setString(i++, status);
 			ps.setString(i++, techProfileType);
 			ps.setString(i++, loginUser);
 			ps.setString(i++, id);
-			if (ps.executeUpdate() != 0)
-				;
+			if (ps.executeUpdate() != 0){
+			XMPPUtill.updateRegisterdXmppUser(new XmppUser(firstName+"_"+id, nPassword, firstName +" "+lastName, email), "Update");
 			return "update";
+			}
 
 		} catch (Exception e) {
 			logger.error("Error while update user profile [" + id + "," + firstName + "," + email + "]", e);
@@ -193,17 +208,20 @@ public class UserServicesImpl implements UserServices {
 	}
 
 	@Override
-	public String resetPassword(int id, String newPassword) {
+	public String resetPassword(int id, String newPassword,String firstName) {
 		logger.info("Updateing password for ID [" + id + "]");
 		String sql = "update USERS set PASSWORD = ? where id = ?";
 		String status = "fail";
+		Users user = getTechProfile(String.valueOf(id)); 
 		try (Connection connection = DBManager.getConnection(Constants.NEAR_GROUP_DS); PreparedStatement ps = connection.prepareStatement(sql)) {
 			ps.setString(1, Helper.encrypt(newPassword, Constants.ENCRYPTED_KEY));
 			ps.setInt(2, id);
+			
 			if (ps.executeUpdate() > 0) {
+				XMPPUtill.updateRegisterdXmppUser(new XmppUser(firstName+"_"+id, newPassword, user.getFirstName()+" "+user.getLastName(), user.getEmail()), "Update");
 				return "success";
 			}
-		} catch (Exception e) {
+			} catch (Exception e) {
 			logger.error("Error while updateing user password :[" + id + "]", e);
 		}
 		return status;
@@ -244,5 +262,37 @@ public class UserServicesImpl implements UserServices {
 			logger.error("Error whle getting  list of user log :[" + sql + "]", e);
 		}
 		return list;
+	}
+	@Override
+	public String getUserProfile(int id) {
+		String sql = "select * from USERS where id=?";
+		StringBuilder status = new StringBuilder();
+		try(Connection connection = DBManager.getConnection(Constants.NEAR_GROUP_DS);
+				PreparedStatement ps = connection.prepareStatement(sql))
+				{
+			ps.setInt(1, id);
+			ResultSet rs = ps.executeQuery();
+			while(rs.next())
+			{
+				status.append(rs.getString("ID")).append("^");
+				status.append(rs.getString("ROLE")).append("^");
+				status.append(rs.getString("FIRST_NAME")).append("_").append(rs.getString("ID")).append("^");
+				status.append(rs.getString("FIRST_NAME")).append("^");
+				status.append(rs.getString("MIDDLE_NAME")).append("^");
+				status.append(rs.getString("LAST_NAME")).append("^");
+				status.append(rs.getString("PASSWORD")).append("^");
+				status.append(rs.getString("EMAIL")).append("^");
+				status.append(rs.getString("MOBILE_NUM")).append("^");
+				status.append(rs.getString("CREATED_BY")).append("^");
+				status.append(rs.getString("CREATED_TIME")).append("^");
+				status.append(rs.getString("MODIFY_BY")).append("^");
+				status.append(rs.getString("MODIFIED_TIME")).append("^");
+				status.append(rs.getString("USER_STATUS")).append("^");
+				
+			}
+				}catch (Exception e) {
+					logger.error("Error while geting latest profile information ["+id+"]");
+				}
+		return status.toString();
 	}
 }

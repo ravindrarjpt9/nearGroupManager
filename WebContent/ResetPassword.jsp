@@ -48,7 +48,7 @@
 		$.ajax({
 	        type: "POST",
 	        url: "/nearGroupManager/home",
-	        data:({resp :"restPassword",newPassword:$("#pwd").val()}),
+	        data:({resp :"restPassword",newPassword:$("#pwd").val(),firstName:$("#firstName").val()}),
 	        success: function (msg)
 	 	     {
 	       	 if($.trim(msg) == 'success')
@@ -90,7 +90,8 @@
 				<td align="center" colspan="2"><input type="submit"
 					value="submit" onclick="RestPassword()" /></td>
 			</tr>
+			
 		</table>
-	
+	<input type="hidden" name="firstName" id="firstName" value="<%=((Users)session.getAttribute("techprofile")).getFirstName()%>">
 </body>
 </html>

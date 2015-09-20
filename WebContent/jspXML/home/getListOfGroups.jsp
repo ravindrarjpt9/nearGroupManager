@@ -1,4 +1,5 @@
 
+<%@page import="com.nearGroup.modal.Users"%>
 <%@page import="com.nearGroup.util.Helper"%>
 <%@page import="com.nearGroup.modal.Groups"%>
 <%@page import="com.nearGroup.ui.server.impl.HomeServicesImpl"%>
@@ -66,29 +67,29 @@
   			start = 0;
   		}
   		
-  		StringBuilder sql =new StringBuilder("SELECT ID ,MODIFIED_TIME,DISPLAY_NAME,GROUP_CATEGORY ,GROUP_CREATION_TIME ,GROUP_ICON_CATEGORY,GROUP_STATUS,NAME,USERS_COUNT "+
+  		StringBuilder sql =new StringBuilder("SELECT ID ,DATE(MODIFIED_TIME) as MODIFIED_TIME,DISPLAY_NAME,GROUP_CATEGORY ,DATE(GROUP_CREATION_TIME) as GROUP_CREATION_TIME,GROUP_ICON_CATEGORY,GROUP_STATUS,NAME,USERS_COUNT "+
   				" FROM  groups");
   		if(!type.trim().equals(""))
-  		sql.append(" where ").append(type).append(" like '") .append(value.trim()).append("%' ").append(" order by id ");
-  		else
-  			sql.append(" order by id ");
+  		sql.append(" where ").append(type).append(" like '") .append(value.trim()).append("%' ");
+  			sql.append(" order by id desc");
   		if (nRowsPerPage != 0) {
   			sql.append(" limit ").append(start).append(" , ")
   					.append(nRowsPerPage);
   		}
-List<Groups> list = userServices.getListOfGroups(sql.toString());
+  		Map<String, Groups> map = userServices.getListOfGroups(sql.toString(),((Users)session.getAttribute("techprofile")).getId());
 %> <page><%=nPageNo%></page> <total><%=total_pages%></total> <records><%=String.valueOf(count)%></records>
-<%   for (Groups obj : list) {
-	   %><row id="<%=obj.getId()%>">
-	   <cell><%=obj.getId()%></cell>
-	   <cell><%=Helper.htmlEscape(obj.getName())%></cell>
-	   <cell><![CDATA[<%=obj.getCategory()%>]]></cell>
-	      <cell><![CDATA[<%=obj.getIconCategory()%>]]></cell>
-	   <cell><![CDATA[<%=obj.getStatus()%>]]></cell>
-	   <cell><![CDATA[<%=obj.getSystemGroupName()%>]]></cell>
-	   <cell><![CDATA[<%=obj.getUserCount()%>]]></cell>
-	   <cell><![CDATA[<%=obj.getCreationTime()%>]]></cell>
-	   <cell><![CDATA[<%=obj.getModifiedTime()%>]]></cell>
+<%   for (Map.Entry<String,Groups> obj : map.entrySet()) {
+	   %><row id="<%=obj.getValue().getId()%>">
+	   <cell><%=obj.getValue().getJoinFlag()%></cell>
+	   <cell><%=obj.getValue().getId()%></cell>
+	   <cell><%=Helper.htmlEscape(obj.getValue().getName())%></cell>
+	   <cell><![CDATA[<%=obj.getValue().getCategory()%>]]></cell>
+	      <cell><![CDATA[<%=obj.getValue().getIconCategory()%>]]></cell>
+	   <cell><![CDATA[<%=obj.getValue().getStatus()%>]]></cell>
+	   <cell><![CDATA[<%=obj.getValue().getSystemGroupName()%>]]></cell>
+	   <cell><![CDATA[<%=obj.getValue().getUserCount()%>]]></cell>
+	   <cell><![CDATA[<%=obj.getValue().getCreationTime()%>]]></cell>
+	   <cell><![CDATA[<%=obj.getValue().getModifiedTime()%>]]></cell>
 	   
 	   
 	   

@@ -1,11 +1,12 @@
 
+<%@page import="com.nearGroup.ui.server.impl.AppsUsersServicesImpl"%>
+<%@page import="com.nearGroup.ui.server.AppsUsersServices"%>
 <%@page import="com.nearGroup.modal.Users"%>
-<%@page import="com.nearGroup.ui.server.impl.UserServicesImpl"%>
-<%@page import="com.nearGroup.ui.server.UserServices"%>
+
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%-- <%@ include file="/WEB-INF/templates/sessionValidation.jsp"%>
  --%><%!
-UserServices  usersServices = new UserServicesImpl();
+AppsUsersServices appsUsersServices = new AppsUsersServicesImpl();
 
 
 %>
@@ -14,42 +15,23 @@ UserServices  usersServices = new UserServicesImpl();
 
 String resp = request.getParameter("resp");
 
-String id = request.getParameter("tid");if(id == null){id="";}
-
-if(("save").equalsIgnoreCase(resp) && id =="")
+ 
+if("ACTIVE".equalsIgnoreCase(resp) || "BLOCKED".equalsIgnoreCase(resp) || "DELETED".equalsIgnoreCase(resp))
 {
-	String status = usersServices.insertNewTechProfile(request.getParameter("pTechProfileType1"),request.getParameter("firstName1"),
-			request.getParameter("middleName1"),request.getParameter("lastName1"),request.getParameter("password1"),
-			request.getParameter("email1"),request.getParameter("mobile1"),request.getParameter("status1"),((Users)session.getAttribute("techprofile")).getFirstName()+" "+((Users)session.getAttribute("techprofile")).getLastName());
-	%><%=status%><%
+	String msg = appsUsersServices.getUpdateUserStatus(request.getParameter("id"),((Users)session.getAttribute("techprofile")).getFirstName()+" "+((Users)session.getAttribute("techprofile")).getLastName(),resp,request.getParameter("pushid"),request.getParameter("message"));
+	%><%=msg%><%
 	
+}else if("DeleteUserFromDb".equalsIgnoreCase(resp))
+{
+String msg = appsUsersServices.getDeletedUserFromDb(request.getParameter("id"));
+%><%=msg%><%
 }
- else if(("save").equalsIgnoreCase(resp) && id !="")
- {
-	
- 	String status = usersServices.updateTechProfile(request.getParameter("tid"),request.getParameter("pTechProfileType1"),request.getParameter("firstName1"),
-			request.getParameter("middleName1"),request.getParameter("lastName1"),request.getParameter("passwordStatus1"),request.getParameter("password1"),
-			request.getParameter("email1"),request.getParameter("mobile1"),request.getParameter("status1"),((Users)session.getAttribute("techprofile1")).getFirstName()+" "+((Users)session.getAttribute("techprofile")).getLastName());
- 	%><%=status%><%
- }
-// }
-// else if(("update").equalsIgnoreCase(resp))
-// {
-// 	String status = techProfileService.updatePracticeRecord(request.getParameter("pid"),request.getParameter("smode"),request.getParameter("email"));
 
-// }
-// else if("deleteall".equalsIgnoreCase(resp))
-// {
 
-// }
-// else if("LoadTechProfile".equalsIgnoreCase(resp))
-// {
-// 	String msg = userInfo.getUserInfoByUserName(request.getParameter("techName"));
 
-	
 // }else if(("ReloadProfile").equalsIgnoreCase(resp))
 // {
-// 	int msg = techProfileService.getReloadTechProfileData(request.getParameter("eManagerIds"),request.getParameter("eManagernames"));
+// 	int msg = appsUsersServices.getReloadTechProfileData(request.getParameter("eManagerIds"),request.getParameter("eManagernames"));
 
 // }else if(("ReloadSingleTechProfile").equalsIgnoreCase(resp))
 // {

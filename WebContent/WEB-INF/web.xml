@@ -49,6 +49,17 @@
 		<url-pattern>/group.do</url-pattern>
 	</servlet-mapping>
 	
+	<servlet>
+		<description></description>
+		<servlet-name>topicList</servlet-name>
+		<jsp-file>/jspXML/home/getListOfTopicsList.jsp</jsp-file>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>topicList</servlet-name>
+		<url-pattern>/topic.do</url-pattern>
+	</servlet-mapping>
+	
 	
   <!-- Users Module -->
   
@@ -85,6 +96,30 @@
 		<url-pattern>/userLog.do</url-pattern>
 	</servlet-mapping>
 	
+	
+	<!-- App's Users -->
+	
+	<servlet>
+		<description></description>
+		<servlet-name>appusers</servlet-name>
+		<jsp-file>/jspXML/users/getListOfAppsUsers.jsp</jsp-file>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>appusers</servlet-name>
+		<url-pattern>/appusers.do</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<description></description>
+		<servlet-name>doAppUsers</servlet-name>
+		<jsp-file>/jspXML/users/dojob.jsp</jsp-file>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>doAppUsers</servlet-name>
+		<url-pattern>/doAppUsers.do</url-pattern>
+	</servlet-mapping>
 	
   
   <!-- Session time out 10 hour 600 min -->

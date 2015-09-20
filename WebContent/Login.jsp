@@ -1,8 +1,10 @@
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE>
 <html>
 <head>
-
+<c:if test="${techprofile ne null }">
+<c:redirect url="/home.jsp"></c:redirect>
+</c:if>
 <meta http-equiv="Cache-control" content="no-cache">
 <meta http-equiv='expires' content='0'>
 <meta http-equiv='pragma' content='no-cache'>
@@ -32,7 +34,7 @@ background-color:#DCECF1;
       </div>
       
       <div id="form_val">      
-        <div class="label" style="font-family: Lucida Grande,Lucida Sans,Arial,sans-serif;">User Name&nbsp;&nbsp;&nbsp;:</div>
+        <div class="label" style="font-family: Lucida Grande,Lucida Sans,Arial,sans-serif;">eMail ID &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</div>
         <div class="control"><input type="text" name="login_id" id="login_id" value="" />
        </div>
         
